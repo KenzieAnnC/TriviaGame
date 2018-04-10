@@ -2,22 +2,29 @@
 
 .display-4 {
     font-family: 'Anton', sans-serif;
+    text-shadow: 5px 2px 13px rgb(78, 78, 78);
+    font-size: 100px;
+    text-align: center;
 }
 
 .lead {
     font-family: 'Antic Slab', serif;
-    font-size: 25px;
+    font-size: 18px;
     letter-spacing: -1px;
+    text-shadow: 2px 2px 13px rgb(110, 99, 99);
+    line-height: 30%;
+    text-align: center;
 }
 
 .jumbotron {
     margin: 0 auto;
     background-color: rgb(150, 118, 118);
     color: rgb(36, 36, 36);
-    text-align: center;
     text-shadow: navy;
     border-bottom-style: double;
     border-width: 10px;
+    padding: 45px 30px 30px 30px;
+
 }
 
 body {
@@ -38,5 +45,6 @@ body {
 
 #container-header {
     text-align: center;
+    
 }
 
