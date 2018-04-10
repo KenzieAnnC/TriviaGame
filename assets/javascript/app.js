@@ -37,6 +37,14 @@ var currentQuestion = triviaQuestions[Math.floor(Math.random()*triviaQuestions.l
 
 console.log(currentQuestion);
 
+function displayQuestion() {
+    $("#question").text(currentQuestion.question);
+    currentQuestion.choices.forEach(function(element) {
+        $("#choices").append("<li>" + currentQuestion.choices);
+      });
+
+}
+displayQuestion();
 
 
 });
