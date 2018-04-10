@@ -7,6 +7,7 @@
 .lead {
     font-family: 'Antic Slab', serif;
     font-size: 25px;
+    letter-spacing: -1px;
 }
 
 .jumbotron {
@@ -15,6 +16,8 @@
     color: rgb(36, 36, 36);
     text-align: center;
     text-shadow: navy;
+    border-bottom-style: double;
+    border-width: 10px;
 }
 
 body {
@@ -28,5 +31,6 @@ body {
     width: 960px;
     z-index: 100;
     padding: 20px;
+    opacity: 0.65;
 
 }
