@@ -32,5 +32,11 @@ body {
     z-index: 100;
     padding: 20px;
     opacity: 0.65;
+    line-height: 1.6;
 
 }
+
+#container-header {
+    text-align: center;
+}
+
