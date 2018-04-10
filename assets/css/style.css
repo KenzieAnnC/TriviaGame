@@ -1,0 +1,32 @@
+
+
+.display-4 {
+    font-family: 'Anton', sans-serif;
+}
+
+.lead {
+    font-family: 'Antic Slab', serif;
+    font-size: 25px;
+}
+
+.jumbotron {
+    margin: 0 auto;
+    background-color: rgb(150, 118, 118);
+    color: rgb(36, 36, 36);
+    text-align: center;
+    text-shadow: navy;
+}
+
+body {
+    background: url('../images/background.png');
+    font-family: 'Antic Slab', serif;
+
+}
+
+.container {
+    background: lightgray;
+    width: 960px;
+    z-index: 100;
+    padding: 20px;
+
+}
