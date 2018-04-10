@@ -40,7 +40,7 @@ console.log(currentQuestion);
 function displayQuestion() {
     $("#question").text(currentQuestion.question);
     currentQuestion.choices.forEach(function(element) {
-        $("#choices").append("<li>" + currentQuestion.choices);
+        $("#choices").append("<li>" + "<input type = radio>" + element + "</li>");
       });
 
 }
