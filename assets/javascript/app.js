@@ -30,21 +30,46 @@ var triviaQuestions = [{
 var userAnswers = [];
 var timer = "";
 var submit = "";
+var questionsRight = 0;
+var questionsWrong = 0;
 var gameFinish = false;
+var nextQuestion = "";
 
 
-var currentQuestion = triviaQuestions[Math.floor(Math.random()*triviaQuestions.length)];
-
-console.log(currentQuestion);
-
-function displayQuestion() {
-    $("#question").text(currentQuestion.question);
-    currentQuestion.choices.forEach(function(element) {
-        $("#choices").append("<li>" + "<input type = radio>" + element + "</li>");
-      });
+function displayQuestions(){
 
 }
-displayQuestion();
+
+function orderQuestions(){
+    triviaQuestions.forEach(element => {
+        $("#quiz").append("<p>" + element.question + "</p>");
+    });
+    
+    // for (i = 0; i < triviaQuestions.length; i++) {
+    //     // $("#quiz").append("<p>" + triviaQuestions.question);
+        
+    // }
+};
+// var questions = triviaQuestions[Math.floor(Math.random()*triviaQuestions.length)];
+
+
+
+// console.log(currentQuestion);
+
+// function displayQuestions() {
+//     $("#questions").text(currentQuestion.question);
+//     currentQuestion.choices.forEach(function(element) {
+//         $("#choices").append("<li>" + "<input type = radio>" + element + "</li>");
+//       });
+// }
+
+// function makeGuess() {
+    
+// }
+
+orderQuestions();
+
+
 
 
 });
