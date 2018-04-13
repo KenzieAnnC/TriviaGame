@@ -22,8 +22,8 @@ $(document).ready(function () {
             choices: ["Liam Dunn, an American character actor", "His mother and fathers therapist", "The local Catholic priest", "His father"],
             correctAnswer: 2
         }, {
-            question: "True or false, Liam should have been chosen to play James Bond in Golden Eye instead of Pierce Brosnan?",
-            choices: ["True", "False"],
+            question: "Should have Liam been chosen to play James Bond in Golden Eye instead of Pierce Brosnan?",
+            choices: ["Yes", "Also yes"],
             correctAnswer: 0
         }];
 
@@ -35,6 +35,9 @@ $(document).ready(function () {
     var questionsWrong = 0;
     var gameFinish = false;
     var submit;
+    value = $("input[type='radio']:checked").val();
+
+  
 
     function resetGame() {
         userGuess = [];
@@ -62,6 +65,9 @@ $(document).ready(function () {
             str += "</p>";
 
             str += "<ul>";
+            
+            evaluateGuess();
+            
 
             // currentQuestion.choices is an array of (string) choices
             //
@@ -76,12 +82,17 @@ $(document).ready(function () {
                 str += currentChoice;
                 str += "</li>"
                 console.log(currentChoice);
+               
 
-                //   value = $(currentChoice).val();
-                //   console.log(value);
-                //   if (value == triviaQuestions[currentQuestion].correctAnswer) {
-                //     correctAnswers++;
-                // }
+              
+                    // var $radios = $('input:radio');
+                    // console.log($radios);
+                    // if($radios.is(':checked') === correctAnswer) {
+                    //     questionsRight++;
+                    // }
+             
+
+                
 
 
             });
@@ -104,19 +115,28 @@ $(document).ready(function () {
     function showGameResult() {
         $("#questions").hide();
         $("#button").hide();
-        $("#results").append("Correct: " + questionsRight + "<br>" + "Questions Wrong: " + questionsWrong + "<br>");
+        $("#results").append("Correct: " + questionsRight + "<br>" + "Incorrect: " + questionsWrong + "<br>");
         $("#results-img").show();
 
 
     };
 
     function evaluateGuess() {
+
+        // triviaQuestions.correctAnswer.forEach()
+
+        //add forEach to all checked choices so the questionsRight goes up by one for every correct guess and vice versa for questionsWrong
         value = $("input[type='radio']:checked").val();
-        if (value == triviaQuestions.correctAnswer) {
+
+        if (value === triviaQuestions.correctAnswer) {
             questionsRight++;
         } else {
             questionsWrong++;
         };
+       
+
+       
+        // console.log(currentChoice);
         // console.log(triviaQuestions.correctAnswer);
     };
 
@@ -130,7 +150,7 @@ $(document).ready(function () {
 
 
 
-
+    console.log(value);
 
 
 
