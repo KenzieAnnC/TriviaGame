@@ -47,4 +47,13 @@ body {
     font-size: 20px;
 }
 
+#game-over {
+    margin: 100 auto;
+    border-width: 100px;
+}
+
+#results {
+    text-align: center;
+}
+
 

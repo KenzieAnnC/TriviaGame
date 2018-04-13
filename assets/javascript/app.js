@@ -88,15 +88,22 @@ function orderQuestions(){
         $("#questions").append(str);
 
     });
+    $("#results-img").hide();
+
     
 };
 
 
 function showGameResult() {
     $("#questions").hide();
-    $("#quiz").text(questionsRight + "<br>" + questionsWrong);
+    $("#button").hide();
+    $("#results").append(questionsRight + "<br>" + questionsWrong + "<br>");
+    $("#results-img").show();
+    
 
 }
+
+
 
 
 
