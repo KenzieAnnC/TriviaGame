@@ -42,7 +42,7 @@ function resetGame() {
     questionsWrong = 0;
     gameFinish = false;
 
-}
+};
 
 orderQuestions();
 
@@ -81,7 +81,7 @@ function orderQuestions(){
         str += "</ul>";
         
       
-        console.log(str);
+        // console.log(str);
         
         
         // Select the div with the id of "questions"
@@ -97,12 +97,27 @@ function orderQuestions(){
 function showGameResult() {
     $("#questions").hide();
     $("#button").hide();
-    $("#results").append(questionsRight + "<br>" + questionsWrong + "<br>");
+    $("#results").append("Correct: " + questionsRight + "<br>" + "Incorrect: " + questionsWrong + "<br>");
     $("#results-img").show();
     
 
-}
+};
 
+function evaluateGuess() {
+    value = $("input[type='radio']:checked").val();
+    if (value == triviaQuestions.correctAnswer) {
+        questionsRight++;
+    } else {
+        questionsWrong++;
+    }
+    console.log(value);
+};
+
+$("#quiz").on("click", "#submit-button", function
+(){
+    evaluateGuess();
+    showGameResult();
+});
 
 
 
