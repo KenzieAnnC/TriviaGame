@@ -1,12 +1,13 @@
 $(document).ready(function () {
 
-var triviaQuestions = [{
+var triviaQuestions = [
+    {
     question: "Where was Liam born?",
     choices: ["Hawaii", "Ireland", "Tokyo", "Germany"],
     correctAnswer: 1
 }, {
     question: "Why did Liam start acting?",
-    choices: ["He always had a passion for it", "He was bullied and he thought being an actor would make him 'cooler'", "He wanted to impress his parents", "He wanted to imopress a girl at school"],
+    choices: ["He always had a passion for it", "He was bullied and he thought being an actor would make him 'cooler'", "He wanted to impress his parents", "He wanted to impress a girl at school"],
     correctAnswer: 3
 }, {
     question: "When did Liam become a US citizen?",
@@ -36,13 +37,12 @@ var gameFinish = false;
 var nextQuestion = "";
 
 
-function displayQuestions(){
+// Show every question with the possible answers directly underneath it
 
-}
+function renderQuestions(){
+    triviaQuestions.forEach(function(element) {
+        $("#questions").append("<p>" + element.question + "</p>" + "<input type = radio>" + element.choices);
 
-function orderQuestions(){
-    triviaQuestions.forEach(element => {
-        $("#quiz").append("<p>" + element.question + "</p>");
     });
     
     // for (i = 0; i < triviaQuestions.length; i++) {
@@ -50,6 +50,16 @@ function orderQuestions(){
         
     // }
 };
+    orderQuestions();
+
+
+
+
+
+
+
+    
+// 
 // var questions = triviaQuestions[Math.floor(Math.random()*triviaQuestions.length)];
 
 
@@ -67,7 +77,7 @@ function orderQuestions(){
     
 // }
 
-orderQuestions();
+
 
 
 
