@@ -80,7 +80,7 @@ function orderQuestions(){
         });
         str += "</ul>";
         
-      
+            console.log(currentQuestion.choices);
         // console.log(str);
         
         
@@ -97,7 +97,7 @@ function orderQuestions(){
 function showGameResult() {
     $("#questions").hide();
     $("#button").hide();
-    $("#results").append("Correct: " + questionsRight + "<br>" + "Incorrect: " + questionsWrong + "<br>");
+    $("#results").append("Correct: " + questionsRight + "<br>" + "Questions Wrong: " + questionsWrong + "<br>");
     $("#results-img").show();
     
 
@@ -109,14 +109,15 @@ function evaluateGuess() {
         questionsRight++;
     } else {
         questionsWrong++;
-    }
-    console.log(value);
+    };
+    console.log(triviaQuestions.correctAnswer);
 };
 
-$("#quiz").on("click", "#submit-button", function
-(){
+$("#quiz").submit(function(event) {
+    
     evaluateGuess();
     showGameResult();
+    event.preventDefault();
 });
 
 
