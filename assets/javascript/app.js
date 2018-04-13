@@ -37,9 +37,9 @@ var gameFinish = false;
 var nextQuestion = "";
 
 
-// Show every question with the possible answers directly underneath it
+// get every question to display on the page with the possible answers directly underneath each question 
 
-function renderQuestions(){
+function orderQuestions(){
     triviaQuestions.forEach(function(element) {
         $("#questions").append("<p>" + element.question + "</p>" + "<input type = radio>" + element.choices);
 
@@ -50,7 +50,9 @@ function renderQuestions(){
         
     // }
 };
-    orderQuestions();
+
+
+orderQuestions();
 
 
 
@@ -58,8 +60,9 @@ function renderQuestions(){
 
 
 
-    
-// 
+
+
+
 // var questions = triviaQuestions[Math.floor(Math.random()*triviaQuestions.length)];
 
 
