@@ -29,13 +29,37 @@ $(document).ready(function () {
 
 
     var userGuess = [];
-    var timer = "";
     var submit = "";
     var questionsRight = 0;
     var questionsWrong = 0;
     var gameFinish = false;
     var submit;
-    // value = $("input[type='radio']:checked").val();
+
+    // Timer //
+    var timer = 20;
+    var intervalid;
+
+    function run() {
+        clearInterval(intervalid);
+        intervalid = setInterval(decrement, 1000)
+    }
+
+    function decrement() {
+        timer--;
+        $("#timer").html("<h2>" + "Seconds Remaining" + timer + "</h2>");
+
+        if (timer === 0) {
+            stopTimer();
+            evaluateGuess();
+            showGameResult();
+        }
+
+    }
+
+    function stopTimer() {
+        clearInterval(intervalid);
+    }
+   
 
   
 
@@ -47,7 +71,9 @@ $(document).ready(function () {
 
     };
 
+    run();
     orderQuestions();
+    
 
     function orderQuestions() {
 
@@ -116,6 +142,7 @@ $(document).ready(function () {
     function evaluateGuess() {
 
         triviaQuestions.forEach(function (currentQuestion) {
+            
 
 
         value = $('input[type="radio"]:checked').val();
