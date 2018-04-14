@@ -35,7 +35,7 @@ $(document).ready(function () {
     var questionsWrong = 0;
     var gameFinish = false;
     var submit;
-    value = $("input[type='radio']:checked").val();
+    // value = $("input[type='radio']:checked").val();
 
   
 
@@ -65,8 +65,9 @@ $(document).ready(function () {
             str += "</p>";
 
             str += "<ul>";
-            
-            evaluateGuess();
+           
+
+            // evaluateGuess();
             
 
             // currentQuestion.choices is an array of (string) choices
@@ -76,24 +77,13 @@ $(document).ready(function () {
 
 
                 str += "<li>"
-                // currentQuestion.radioName is a property we can use to GROUP a bunch of radio buttons. All radio buttons in this group SHARE this. You will use this if you get to putting this into a form and submiting it.
+               
                 // currentIndex will assign the index in the choices array (it looks like correctAnswer will use this, as it has the index of the correct choice)
                 str += '<input type="radio" name="' + radioName + '" value="' + currentIndex + '">';
                 str += currentChoice;
                 str += "</li>"
-                console.log(currentChoice);
                
-
-              
-                    // var $radios = $('input:radio');
-                    // console.log($radios);
-                    // if($radios.is(':checked') === correctAnswer) {
-                    //     questionsRight++;
-                    // }
-             
-
-                
-
+               
 
             });
             str += "</ul>";
@@ -107,6 +97,8 @@ $(document).ready(function () {
 
         });
         $("#results-img").hide();
+
+        
 
 
     };
@@ -123,18 +115,20 @@ $(document).ready(function () {
 
     function evaluateGuess() {
 
-        // triviaQuestions.correctAnswer.forEach()
+        triviaQuestions.forEach(function (currentQuestion) {
 
-        //add forEach to all checked choices so the questionsRight goes up by one for every correct guess and vice versa for questionsWrong
-        value = $("input[type='radio']:checked").val();
 
-        if (value === triviaQuestions.correctAnswer) {
+        value = $('input[type="radio"]:checked').val();
+
+        if (value === currentQuestion.correctAnswer) {
             questionsRight++;
-        } else {
+        } else if (value == undefined || value != currentQuestion.correctAnswer) {
             questionsWrong++;
-        };
-       
 
+        }
+    });
+       
+        console.log(value);
        
         // console.log(currentChoice);
         // console.log(triviaQuestions.correctAnswer);
@@ -150,7 +144,7 @@ $(document).ready(function () {
 
 
 
-    console.log(value);
+    
 
 
 
