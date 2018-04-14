@@ -46,7 +46,7 @@ $(document).ready(function () {
 
     function decrement() {
         timer--;
-        $("#timer").html("<h2>" + "Seconds Remaining" + timer + "</h2>");
+        $("#timer").html("<h2>" + "Seconds Remaining: " + timer + "</h2>");
 
         if (timer === 0) {
             stopTimer();
@@ -59,12 +59,12 @@ $(document).ready(function () {
     function stopTimer() {
         clearInterval(intervalid);
     }
-   
 
-  
+
+
 
     function resetGame() {
-        userGuess = [];
+        stopTimer();
         questionsRight = 0;
         questionsWrong = 0;
         gameFinish = false;
@@ -73,16 +73,14 @@ $(document).ready(function () {
 
     run();
     orderQuestions();
-    
+
 
     function orderQuestions() {
 
         triviaQuestions.forEach(function (currentQuestion) {
 
-            // Start to create the HTML with a string...
+     
             var str = '';
-
-            // We will put the question inside <p> tags to help with formating 
             str += "<p>";
 
             // Current question
@@ -91,25 +89,19 @@ $(document).ready(function () {
             str += "</p>";
 
             str += "<ul>";
-           
 
-            // evaluateGuess();
+
             
-
-            // currentQuestion.choices is an array of (string) choices
-            //
 
             currentQuestion.choices.forEach(function (currentChoice, currentIndex, radioName) {
 
 
                 str += "<li>"
-               
-                // currentIndex will assign the index in the choices array (it looks like correctAnswer will use this, as it has the index of the correct choice)
                 str += '<input type="radio" name="' + radioName + '" value="' + currentIndex + '">';
                 str += currentChoice;
                 str += "</li>"
-               
-               
+
+
 
             });
             str += "</ul>";
@@ -117,14 +109,12 @@ $(document).ready(function () {
             // console.log(currentQuestion.choices);
             console.log(str);
 
-
-            // Select the div with the id of "questions"
             $("#questions").append(str);
 
         });
         $("#results-img").hide();
 
-        
+
 
 
     };
@@ -142,36 +132,45 @@ $(document).ready(function () {
     function evaluateGuess() {
 
         triviaQuestions.forEach(function (currentQuestion) {
-            
 
 
-        value = $('input[type="radio"]:checked').val();
 
-        if (value === currentQuestion.correctAnswer) {
-            questionsRight++;
-        } else if (value == undefined || value != currentQuestion.correctAnswer) {
-            questionsWrong++;
+            value = $('input[type="radio"]:checked').val();
 
-        }
-    });
-       
+            if (value === currentQuestion.correctAnswer) {
+                questionsRight++;
+            } else if (value == undefined || value != currentQuestion.correctAnswer) {
+                questionsWrong++;
+
+            }
+        });
+
         console.log(value);
-       
+
         // console.log(currentChoice);
         // console.log(triviaQuestions.correctAnswer);
     };
-
-    $("#quiz").submit(function(event) {
-
-        evaluateGuess();
-        showGameResult();
-        event.preventDefault();
-    });
-
-
-
-
     
+
+    function submitGame() {
+
+        $("#quiz").submit(function (event) {
+
+            evaluateGuess();
+            showGameResult();
+            event.preventDefault();
+            gameFinish = true;
+        });
+        
+    }
+    
+
+
+    submitGame();
+
+
+
+
 
 
 

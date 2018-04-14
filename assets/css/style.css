@@ -48,8 +48,7 @@ body {
 }
 
 #game-over {
-    margin: 100 auto;
-    border-width: 100px;
+    display: inline;
 }
 
 #results {
