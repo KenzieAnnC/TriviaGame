@@ -23,7 +23,7 @@ $(document).ready(function () {
             correctAnswer: 2
         }, {
             question: "Should have Liam been chosen to play James Bond in Golden Eye instead of Pierce Brosnan?",
-            choices: ["Yes", "Also yes"],
+            choices: ["Yes", "No"],
             correctAnswer: 0
         }];
 
@@ -61,8 +61,6 @@ $(document).ready(function () {
     }
 
 
-
-
     function resetGame() {
         stopTimer();
         questionsRight = 0;
@@ -79,19 +77,16 @@ $(document).ready(function () {
 
         triviaQuestions.forEach(function (currentQuestion) {
 
-     
+
             var str = '';
             str += "<p>";
 
-            // Current question
             str += currentQuestion.question;
 
             str += "</p>";
 
             str += "<ul>";
 
-
-            
 
             currentQuestion.choices.forEach(function (currentChoice, currentIndex, radioName) {
 
@@ -106,15 +101,11 @@ $(document).ready(function () {
             });
             str += "</ul>";
 
-            // console.log(currentQuestion.choices);
             console.log(str);
-
             $("#questions").append(str);
 
         });
         $("#results-img").hide();
-
-
 
 
     };
@@ -131,15 +122,19 @@ $(document).ready(function () {
 
     function evaluateGuess() {
 
-        triviaQuestions.forEach(function (currentQuestion) {
+        // fix function so that it adds 1 to questionsRight/questionsWrong for each question answered correctly or incorrectly
+        // fix the questionsRight counter
+        // Even though it doesnt count each question, I know that the questionsWrong counter is correct because if the first question is answered correctly it doesn't count increment the questionsWrong number
+
+        triviaQuestions.forEach(function (questions) {
 
 
 
             value = $('input[type="radio"]:checked').val();
 
-            if (value === currentQuestion.correctAnswer) {
+            if (value === questions.correctAnswer) {
                 questionsRight++;
-            } else if (value == undefined || value != currentQuestion.correctAnswer) {
+            } else if (value === undefined || value != questions4.correctAnswer) {
                 questionsWrong++;
 
             }
@@ -147,26 +142,24 @@ $(document).ready(function () {
 
         console.log(value);
 
-        // console.log(currentChoice);
-        // console.log(triviaQuestions.correctAnswer);
     };
-    
-
-    function submitGame() {
-
-        $("#quiz").submit(function (event) {
-
-            evaluateGuess();
-            showGameResult();
-            event.preventDefault();
-            gameFinish = true;
-        });
-        
-    }
-    
 
 
-    submitGame();
+    // still not sure how to use forms and form submission correctly
+
+    $("#quiz").submit(function (event) {
+
+        evaluateGuess();
+        showGameResult();
+        event.preventDefault();
+        gameFinish = true;
+    });
+
+
+
+
+
+
 
 
 
